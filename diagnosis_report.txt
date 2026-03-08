@@ -1,0 +1,23 @@
+
+==============================
+        AI RADIOLOGY REPORT
+==============================
+
+Image File: dataset/test/not_fractured/0.png
+
+Diagnosis Result
+----------------
+Result: No Fracture Detected
+Confidence: 99.74%
+
+Recommendation
+--------------
+Please consult an orthopedic specialist
+for professional medical evaluation.
+
+Note
+----
+This AI system provides assistance only
+and should not replace clinical diagnosis.
+
+==============================

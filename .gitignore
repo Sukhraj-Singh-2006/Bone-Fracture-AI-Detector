@@ -1,0 +1,7 @@
+venv/
+dataset/
+dataset_types/
+__pycache__/
+*.pth
+*.pt
+*.h5

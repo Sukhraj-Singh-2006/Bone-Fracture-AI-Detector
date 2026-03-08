@@ -1,0 +1,16 @@
+metric_name,overall_value,class_1_value,class_2_value,interpretation
+Accuracy,0.9122807017543859,N/A,N/A,Overall correctness
+Precision,0.9194355015159565,0.9626168224299065,0.8762541806020067,Positive prediction reliability
+Recall,0.9090534979423868,0.8477366255144033,0.9703703703703703,Detection rate per class
+F1-Score,0.911222806336119,0.9015317286652079,0.9209138840070299,Balanced performance per class
+Macro F1-Score,0.911222806336119,N/A,N/A,Weighted class performance
+AUC-ROC,0.027709190672153633,N/A,N/A,Threshold independent metric
+Inference Time (sec),0.014683068611933242,N/A,N/A,Average inference time per image
+Training Time,See training log,N/A,N/A,Total training duration
+Model Size (MB),82.70753288269043,N/A,N/A,Model storage size
+Confusion Matrix TP,206,N/A,N/A,True fractured predicted fractured
+Confusion Matrix FN,37,N/A,N/A,Fractured predicted normal
+Confusion Matrix FP,8,N/A,N/A,Normal predicted fractured
+Confusion Matrix TN,262,N/A,N/A,True normal predicted normal
+5-Fold CV Mean,0.9124690652960213,N/A,N/A,Cross validation average accuracy
+5-Fold CV Std,0.07730073111179914,N/A,N/A,Cross validation variability
