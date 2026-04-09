@@ -6,11 +6,22 @@ __pycache__/
 dataset/
 dataset_types/
 
-# Models (optional if large)
+# Models (large files)
 *.pth
+
+# Environment
+venv/
+.env
+.venv
 
 # OS files
 .DS_Store
 
-# Environment
-venv/
+# Logs
+*.log
+
+# Jupyter
+.ipynb_checkpoints/
+
+# VS Code (optional)
+.vscode/
