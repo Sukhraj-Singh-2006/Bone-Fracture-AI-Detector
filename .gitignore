@@ -1,7 +1,16 @@
-venv/
+# Python
+__pycache__/
+*.pyc
+
+# Dataset (IMPORTANT)
 dataset/
 dataset_types/
-__pycache__/
+
+# Models (optional if large)
 *.pth
-*.pt
-*.h5
+
+# OS files
+.DS_Store
+
+# Environment
+venv/

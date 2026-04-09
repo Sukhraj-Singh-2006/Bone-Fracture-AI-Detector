@@ -1,23 +1,34 @@
 
-==============================
-        AI RADIOLOGY REPORT
-==============================
+====================================================
+              AI RADIOLOGY DIAGNOSTIC REPORT
+====================================================
 
-Image File: dataset/test/not_fractured/0.png
+Report Generated : 2026-03-25 21:32:26
+Image File       : D:\Download\bone_fracture_AI\dataset_types\test\Avulsion\5c7fec45769db28bdd107336f19004336689a4fb804b37af3096741f2879ff02_jumbo.jpeg
 
-Diagnosis Result
-----------------
-Result: No Fracture Detected
-Confidence: 99.74%
+----------------------------------------------------
+DIAGNOSIS SUMMARY
+----------------------------------------------------
+Finding         : Fracture Detected
+Confidence      : 89.74%
 
-Recommendation
---------------
-Please consult an orthopedic specialist
-for professional medical evaluation.
+----------------------------------------------------
+FRACTURE CLASSIFICATION
+----------------------------------------------------
+Fracture Type   : Avulsion
+Type Confidence : 92.41%
 
-Note
-----
-This AI system provides assistance only
-and should not replace clinical diagnosis.
+----------------------------------------------------
+CLINICAL RECOMMENDATION
+----------------------------------------------------
+• Immediate consultation with an orthopedic specialist is advised.
+• Further imaging (CT/MRI) may be required for confirmation.
+• Avoid stress or movement in the affected area.
 
-==============================
+----------------------------------------------------
+DISCLAIMER
+----------------------------------------------------
+This AI system is for assistive purposes only and does
+NOT replace professional medical diagnosis.
+
+====================================================

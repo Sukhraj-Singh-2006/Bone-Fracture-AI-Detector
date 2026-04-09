@@ -1,30 +1,37 @@
-import streamlit as st
-from predict_pipeline import predict
+from flask import Flask, request, jsonify
+from flask_cors import CORS
 from PIL import Image
-import tempfile
+from predict_pipeline import predict_image
 
-st.title("🦴 Bone Fracture Detection AI")
+app = Flask(__name__)
+CORS(app)  # 🔥 IMPORTANT
 
-uploaded_file = st.file_uploader("Upload X-ray Image", type=["jpg","jpeg","png"])
+@app.route("/predict", methods=["POST"])
+def predict():
 
-if uploaded_file is not None:
+    if "file" not in request.files:
+        return jsonify({"error": "No file uploaded"}), 400
 
-    image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded X-ray", use_container_width=True)
+    file = request.files["file"]
 
-    if st.button("Analyze X-ray"):
+    try:
+        image = Image.open(file).convert("RGB")
 
-        with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as tmp_file:
-            tmp_file.write(uploaded_file.getbuffer())
-            temp_path = tmp_file.name
+        result = predict_image(image)
 
-        st.write("🔍 Running AI analysis...")
+        return jsonify({
+            "result": result["result"],
+            "confidence": result["confidence"],
+            "type": result["type"],
+            "type_confidence": result["type_confidence"],
+            "recommendation": "Consult orthopedic specialist",
+            "note": "AI-generated prediction"
+        })
 
-        predict(temp_path)
+    except Exception as e:
+        print("ERROR:", e)
+        return jsonify({"error": str(e)}), 500
 
-        st.success("Analysis Complete ✅")
 
-        with open("diagnosis_report.txt","r") as f:
-            report = f.read()
-
-        st.text(report)
+if __name__ == "__main__":
+    app.run(debug=True)

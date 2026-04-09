@@ -1,268 +1,274 @@
-# 🦴 Bone Fracture Detection and Classification using Vision Transformer
+# 🦴 Bone Fracture Detection & Classification using Vision Transformer
 
-An AI-powered medical imaging system that automatically detects bone fractures from X-ray images and classifies the fracture type using deep learning.
+An AI-powered medical imaging system that detects bone fractures and classifies fracture types from X-ray images using deep learning.
 
-This project uses a **Vision Transformer (ViT-B/16)** architecture to build a two-stage pipeline capable of assisting doctors in fracture diagnosis.
+🏆 **Achievement:** 2nd Runner-Up — HackBio (Xpecto’26), IIT Mandi
 
 ---
 
 # 📌 Project Overview
 
-Bone fractures are commonly diagnosed through X-ray analysis by radiologists. However, manual diagnosis can be time-consuming and requires medical expertise.
+Bone fractures are commonly diagnosed through X-ray analysis by radiologists. However, manual diagnosis can be time-consuming and requires expert expertise.
 
-This project proposes an **AI-assisted fracture detection system** that:
+This project presents a **deep learning-based fracture detection system** that:
 
-1. Detects whether a bone fracture exists.
-2. Identifies the specific fracture type.
+✔ Detects whether a fracture exists
+✔ Classifies fracture types (12 categories)
+✔ Generates an AI-based diagnostic report
 
-The system processes X-ray images and generates an **AI radiology report with prediction confidence**.
+💡 **Impact:** Helps reduce manual workload and supports faster medical decision-making.
 
 ---
 
-# 🚀 Features
+# 🚀 Key Features
 
-- Binary fracture detection (Fractured / Not Fractured)
-- Fracture type classification (12 classes)
-- AI-generated radiology report
-- Confidence score for predictions
-- Fast inference (~14 ms per image)
-- Web interface for uploading X-ray images
-- Model performance evaluation and analysis
+* ✔ Binary fracture detection (Fractured / Not Fractured)
+* ✔ Multi-class fracture classification (12 types)
+* ✔ Vision Transformer (ViT-Small Patch16 224)
+* ✔ AI-generated radiology report
+* ✔ Confidence score output
+* ✔ Fast inference (~14 ms per image)
+* ✔ Clean modular pipeline
+* ✔ Frontend using HTML, CSS, JavaScript
+
+---
+
+# 📸 Demo
+![alt text](image-1.png)
 
 ---
 
 # 🧠 Model Architecture
 
-The project uses **Vision Transformer (ViT-B/16)**.
+The system uses:
 
-Unlike traditional CNNs, Vision Transformers divide images into patches and process them using transformer attention mechanisms.
+👉 **Vision Transformer (ViT-Small Patch16 224)**
+👉 Trained from scratch (no fracture-pretrained models)
 
-Advantages:
-- Captures global image relationships
-- Effective for complex medical images
-- Modern deep learning architecture
+### Why ViT?
+
+* Captures global image relationships
+* Handles complex medical patterns
+* Modern deep learning approach
 
 ---
 
 # 🔄 System Pipeline
 
-
-User Uploads X-ray Image
-│
-▼
-Image Preprocessing
-(Resize 224x224, Tensor Conversion)
-│
-▼
-Stage 1: Binary Fracture Detection Model
-(Vision Transformer)
-│
-├── No Fracture → Stop
-│
-▼
-Stage 2: Fracture Type Classification Model
-(12 Fracture Types)
-│
-▼
+```bash
+X-ray Image Input (User Upload / Test)
+        ↓
+Image Preprocessing (Resize 224×224 → Tensor)
+        ↓
+Stage 1: Fracture Detection (ViT)
+        ↓
+If Not Fractured → Stop
+        ↓
+Stage 2: Fracture Type Classification (ViT)
+        ↓
+Predicted Fracture Type + Confidence
+        ↓
 AI Diagnosis Report
-(Prediction + Confidence Score)
-│
-▼
-Results Displayed in Web Interface
-
+```
 
 ---
 
 # 📂 Project Structure
 
+```bash
+BONE_FRACTURE_AI/
 
-bone-fracture-ai
-│
-├── app.py # Streamlit frontend
-├── train.py # Model training script
-├── evaluate.py # Model evaluation
-├── predict_pipeline.py # Prediction pipeline
-├── model.py # Vision Transformer model
-├── data_loader.py # Data loading and preprocessing
-│
-├── models/ # Trained models
-│ ├── binary_model.pth
-│ └── type_model.pth
-│
-├── model_performance_analysis.csv
-├── final_results.csv
-│
-├── requirements.txt # Python dependencies
-└── README.md
+├── dataset/                 # Binary dataset
+├── dataset_types/           # Multi-class dataset
 
+├── models/
+│   ├── binary_model.pth
+│   └── type_model.pth
+
+├── Frontend/                # HTML/CSS/JS UI
+
+├── model.py                 # ViT model
+├── train.py                 # Training script
+├── evaluate.py              # Evaluation metrics
+├── predict.py               # Basic prediction
+├── predict_pipeline.py      # Full pipeline
+├── data_loader.py           # Data preprocessing
+
+├── config.yaml
+├── requirements.txt
+├── README.md
+```
 
 ---
 
 # 📊 Model Performance
 
-### Binary Fracture Detection
+## 🟢 Binary Fracture Detection
 
-| Metric | Value |
-|------|------|
-Accuracy | **91.2%**
-Precision | 90.2%
-Recall | 91.1%
-F1 Score | 91.1%
+| Metric        | Value      |
+| ------------- | ---------- |
+| Accuracy      | **91.23%** |
+| Precision     | **91.94%** |
+| Recall        | **90.90%** |
+| F1 Score      | **91.12%** |
+| Test Accuracy | **97.66%** |
 
-### Fracture Type Classification
-
-| Metric | Value |
-|------|------|
-Accuracy | **84.49%**
-
-### Inference Speed
-
-
-~0.014 seconds per image
-
+✔ Excellent generalization
+✔ Very low false positives
 
 ---
 
-# 🦴 Fracture Types Supported
+## 🔵 Fracture Type Classification
 
-The system classifies the following fracture types:
+| Metric              | Value      |
+| ------------------- | ---------- |
+| Validation Accuracy | **86.56%** |
+| Test Accuracy       | **84.49%** |
 
-- Avulsion
-- Comminuted
-- Compression
-- Fracture
-- Greenstick
-- Hairline
-- Impacted
-- Intra-articular
-- Longitudinal
-- Oblique
-- Pathological
-- Spiral
+✔ Good classification performance
+⚠ Slight overfitting observed
+
+---
+
+## ⚡ Inference Speed
+
+~14 ms per image
+
+---
+
+# 🦴 Supported Fracture Types
+
+* Avulsion
+* Comminuted
+* Compression
+* Fracture
+* Greenstick
+* Hairline
+* Impacted
+* Intra-articular
+* Longitudinal
+* Oblique
+* Pathological
+* Spiral
 
 ---
 
 # ⚙️ Training Configuration
 
-| Parameter | Value |
-|----------|------|
-Batch Size | 32
-Epochs | 15
-Learning Rate | 0.0001
-Optimizer | Adam
-Loss Function | CrossEntropyLoss
-Image Size | 224×224
+| Parameter     | Value            |
+| ------------- | ---------------- |
+| Batch Size    | 32               |
+| Epochs        | 15               |
+| Learning Rate | 0.0001           |
+| Optimizer     | Adam             |
+| Loss Function | CrossEntropyLoss |
+| Image Size    | 224×224          |
 
 ---
 
 # 📈 Evaluation Metrics
 
-The system was evaluated using:
+* Accuracy
+* Precision
+* Recall
+* F1 Score
+* Macro F1 Score
+* Confusion Matrix
+* AUC-ROC
+* Cross-validation
 
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-- AUC-ROC
-- Inference Time
-- Cross Validation
+📁 Outputs stored in:
 
-Evaluation results are stored in:
-
-
-final_results.csv
-
-
-Training metrics are stored in:
-
-
-model_performance_analysis.csv
-
+* `final_results.csv`
+* `model_performance_analysis.csv`
 
 ---
+
 # 📂 Dataset
 
-This project uses publicly available X-ray datasets for bone fracture detection and classification.
+This project uses publicly available datasets:
 
-Due to GitHub file size limitations, the datasets are not included in this repository.
+* https://www.kaggle.com/datasets/amohankumar/bone-break-classifier-dataset
+* https://www.kaggle.com/datasets/bmadushanirodrigo/fracture-multi-region-x-ray-data
 
-Users must download the datasets manually.
+⚠ Dataset is not included due to size limitations.
 
-Dataset Sources
-
-The datasets used in this project are available on:
-
-https://www.kaggle.com/datasets/amohankumar/bone-break-classifier-dataset
-
-https://www.kaggle.com/datasets/bmadushanirodrigo/fracture-multi-region-x-ray-data
+---
 
 # 💻 Installation
 
-Clone the repository:
-
 ```bash
 git clone https://github.com/YOUR_USERNAME/bone-fracture-ai.git
-
-Navigate into the folder:
-
 cd bone-fracture-ai
-
-Install dependencies:
-
 pip install -r requirements.txt
-▶️ Run the Application
+```
 
-Start the Streamlit web interface:
+---
 
-streamlit run app.py
+# ▶️ Run Project
 
-Upload an X-ray image and the AI system will analyze it.
+## Run Backend
 
+```bash
+python predict_pipeline.py
+```
+
+## Run Frontend
+
+Open the `Frontend/index.html` file in your browser.
+
+---
+
+# 📄 Sample Output
+
+```bash
 AI RADIOLOGY REPORT
 
 Result: Fracture Detected
-Confidence: 98%
+Confidence: 99.96%
 
-Fracture Type: Spiral
-Type Confidence: 85%
+Fracture Type: Pathological
+Type Confidence: 35.67%
 
 Recommendation:
-Consult an orthopedic specialist.
-🏥 Applications
+Consult an orthopedic specialist
+```
 
-Medical decision support
+---
 
-Radiology assistance
+# 🏥 Applications
 
-Remote healthcare diagnostics
+* Medical decision support
+* Radiology assistance
+* Remote healthcare diagnostics
+* Medical education
 
-Medical education and training
+---
 
-⚠️ Limitations
+# ⚠️ Limitations
 
-Model performance depends on dataset quality
+* Depends on dataset quality
+* Similar fracture types may confuse model
+* Not a replacement for professional diagnosis
 
-Some fracture types have similar visual patterns
+---
 
-The system is intended to assist doctors, not replace them
+# 🔮 Future Improvements
 
-🔮 Future Improvements
+* Larger datasets
+* Explainable AI (Grad-CAM)
+* Mobile app deployment
+* Hospital integration
 
-Larger medical datasets
+---
 
-Explainable AI (Grad-CAM)
+# 👨‍💻 Author
 
-Mobile application integration
+**Jatin Kumar**
+AI / Machine Learning Developer
 
-Hospital system integration
+---
 
-👨‍💻 Author
-
-Jatin Kumar
-
-AI / Machine Learning Project
-
-📜 License
+# 📜 License
 
 This project is for educational and research purposes only.
